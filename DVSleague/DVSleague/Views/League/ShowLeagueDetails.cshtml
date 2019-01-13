@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "ShowLeagueDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model DVSleague.Models.League
+    
+<h2>ShowLeagueDetails</h2>
+
+<div>
+    <div>
+        League name: <span>@Model.Name</span>
+    </div>
+    <div>
+        Country: <span>@Model.Country</span>
+    </div>
+    <div>
+        Top scorer: <span>@Model.TopScorer.FirstName @Model.TopScorer.LastName</span>
+    </div>
+    <div>
+        Top assistant: <span>@Model.TopAssistant.FirstName @Model.TopAssistant.LastName</span>
+    </div>
+    <div>
+        MVP: <span>@Model.MVP.FirstName @Model.MVP.LastName</span>
+    </div>
+</div>
+
