@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Player";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model DVSleague.Models.Player
+
+<div class="playerBorder">
+    <h2>Player:</h2>
+
+    <h4>First Name: </h4>
+    <h4>@Model.FirstName</h4>
+
+    <h4>Last Name: </h4>
+    <h4>@Model.LastName</h4>
+
+    <h4>Date Of Birth: </h4>
+    <h4>@Model.DateOfBirth</h4>
+
+    <h4>Nationality: </h4>
+    <h4>@Model.Nationality</h4>
+
+    <h4>Height: </h4>
+    <h4>@Model.Height</h4>
+
+    <h4>Weight: </h4>
+    <h4>@Model.Weight</h4>
+
+    <h4>Goals: </h4>
+    <h4>@Model.Goals</h4>
+
+    <h4>Assists: </h4>
+    <h4>@Model.Assists</h4>
+</div>

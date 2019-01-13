@@ -17,5 +17,6 @@ namespace DVSleague.Models
         public float Weight { get; set; }
         public int Goals { get; set; }
         public int Assists { get; set; }
+        public Team Team { get; set; }
     }
 }
