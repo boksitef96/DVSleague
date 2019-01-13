@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "ShowPlayersByTeam";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<DVSleague.Models.Player>
+
+
+<h2>Players from team:</h2>
+
+
+<div class="row">
+    @{
+        foreach (var player in Model)
+        {
+    <div class="col-lg-3 playerBorder">
+        <div>
+            <span>First Name: </span>
+            <span>@player.FirstName</span>
+        </div>
+        <div>
+            <span>Last Name: </span>
+            <span>@player.LastName</span>
+        </div>
+        <div>
+            <span>Date Of Birth: </span>
+            <span>@player.DateOfBirth</span>
+        </div>
+        <div>
+            <span>Nationality: </span>
+            <span>@player.Nationality</span>
+        </div>
+        <div>
+            <span>Height: </span>
+            <span>@player.Height</span>
+        </div>
+        <div>
+            <span>Weight: </span>
+            <span>@player.Weight</span>
+        </div>
+        <div>
+            <span>Goals: </span>
+            <span>@player.Goals</span>
+        </div>
+        <div>
+            <span>Assists: </span>
+            <span>@player.Assists</span>
+        </div>
+        <a class="btn btn-primary" href="@Url.RouteUrl("player_details",new { id=@player.Id})">Prikazi detalje</a>
+
+
+    </div>
+        }
+
+     }
+    </div>
+
+

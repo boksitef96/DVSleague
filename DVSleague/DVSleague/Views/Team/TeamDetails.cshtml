@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "TeamDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model DVSleague.Models.Team
+
+<h2>Team Details:</h2>
+
+<div>Name: </div>
+<div>@Model.Name</div>
+
+<div>Country: </div>
+<div>@Model.Country</div>
+
+<div>City: </div>
+<div>@Model.City</div>
+
+<a class="btn btn-primary" href="@Url.RouteUrl("show_players",new { id=@Model.Id})">Prikazi igrace</a>
+
+
+
+
+
+
