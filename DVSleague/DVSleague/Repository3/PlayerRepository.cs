@@ -27,7 +27,7 @@ namespace DVSleague.Repository3
             return player1;
         }
 
-        public List<Player> GetPlayersByTeam(int id)
+        public List<Player> GetPlayersByTeam(int teamId)
         {
             Player player1 = new Player
             {
