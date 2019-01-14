@@ -205,6 +205,8 @@
     <Content Include="Views\Team\ShowTeamsInLeague.cshtml" />
     <Content Include="Views\League\ShowAllLeagues.cshtml" />
     <Content Include="Views\Player\AddNewPlayer.cshtml" />
+    <Content Include="Views\League\AddNewLeague.cshtml" />
+    <Content Include="Views\Team\AddNewTeam.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

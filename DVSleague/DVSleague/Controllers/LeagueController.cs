@@ -40,5 +40,18 @@ namespace DVSleague.Controllers
             return View(list);
         }
 
+        [Route("add-new-league")]
+        public ActionResult AddNewLeague()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Route("add-league", Name = "add_league")]
+        public ActionResult AddLeague(League league)
+        {
+            //function for add new league in neo4j
+            return RedirectToAction("ShowLeagueDetails", new { id = league.Id });
+        }
     }
 }

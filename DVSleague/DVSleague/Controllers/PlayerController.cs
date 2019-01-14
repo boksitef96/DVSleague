@@ -22,17 +22,8 @@ namespace DVSleague.Controllers
         [Route("player/{id}", Name = "player_details")]
         public ActionResult PlayerDetails(int id) //     view/home/Player/PlayerDetails
         {
-            Team team = TeamRepository.getTeamById(2);
-            Player modelPlayer = new Player();
-            foreach (Player player in team.Squad)
-            {
-                if(player.Id == id)
-                {
-                    modelPlayer = player;   
-                }
-            }
-
-            return View(modelPlayer);
+            Player player = PlayerRepository.GetPlayerById(id);
+            return View(player);
         }
 
         [Route("team/{teamId}/players", Name = "show_players")]
