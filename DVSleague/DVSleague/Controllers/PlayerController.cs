@@ -6,12 +6,13 @@ using System.Web.Mvc;
 using DVSleague.Models;
 using DVSleague.Repository3;
 
-
-
 namespace DVSleague.Controllers
 {
     public class PlayerController : Controller
     {
+        private TeamRepository TeamRepository = new TeamRepository();
+        private PlayerRepository PlayerRepository = new PlayerRepository();
+        
         // GET: Player
         public ActionResult Index()
         {
@@ -21,53 +22,24 @@ namespace DVSleague.Controllers
         [Route("player/{id}", Name = "player_details")]
         public ActionResult PlayerDetails(int id) //     view/home/Player/PlayerDetails
         {
-
-            TeamRepository teamrep = new TeamRepository();
-
-            Team team = new Team();
-            team = teamrep.getTeamById(2);
-
-            List<Player> listOfPlayers = new List<Player>();
-            Player player = new Player();
-
-            foreach (Player ply in team.Squad)
+            Team team = TeamRepository.getTeamById(2);
+            Player modelPlayer = new Player();
+            foreach (Player player in team.Squad)
             {
-                if(ply.Id == id)
+                if(player.Id == id)
                 {
-                    player.FirstName = ply.FirstName;
-                    player.LastName = ply.LastName;
-                    player.DateOfBirth = ply.DateOfBirth;
-                    player.Nationality = ply.Nationality;
-                    player.Height = ply.Height;
-                    player.Weight = ply.Weight;
-                    player.Goals = ply.Goals;
-                    player.Assists = ply.Assists;
-                    break;
+                    modelPlayer = player;   
                 }
             }
-            
 
-
-            return View(player);
+            return View(modelPlayer);
         }
 
-
-        [Route("show-players/{id}", Name = "show_players")]
-        public ActionResult ShowPlayersByTeam(int id)        //  view/home/Player/ShowPlayersByTeam
+        [Route("team/{teamId}/players", Name = "show_players")]
+        public ActionResult ShowPlayersByTeam(int teamId)        //  view/home/Player/ShowPlayersByTeam
         {
-            TeamRepository teamrep = new TeamRepository();
-
-            Team team = new Team();
-            team = teamrep.getTeamById(2);
-
-            List<Player> listOfPlayers = new List<Player>();
-
-            foreach(Player ply in team.Squad)
-            {
-                listOfPlayers.Add(ply);
-            }
-
-            return View(listOfPlayers);
+            List<Player> players = PlayerRepository.GetPlayersByTeam(1);
+            return View(players);
         }
 
 

@@ -1,16 +1,16 @@
-﻿using System;
+﻿using DVSleague.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using DVSleague.Models;
 
 namespace DVSleague.Repository3
 {
-    public class TeamRepository
+    public class PlayerRepository
     {
-        public Team getTeamById(int id)
+        public Player GetPlayerById(int id)
         {
-            Player zigara = new Player
+            Player player1 = new Player
             {
                 Id = 1,
                 FirstName = "Marko",
@@ -24,38 +24,10 @@ namespace DVSleague.Repository3
                 Assists = 5
             };
 
-            Player tadic = new Player
-            {
-                Id = 2,
-                FirstName = "Dusan",
-                LastName = "Tadic",
-                DateOfBirth = new DateTime(1991, 02, 02),
-                Position = "SS",
-                Nationality = "Srbin",
-                Height = 180,
-                Weight = 70,
-                Goals = 13,
-                Assists = 13
-            };
-
-            List<Player> players = new List<Player>();
-            players.Add(zigara);
-            players.Add(tadic);
-
-            Team monaco = new Team
-            {
-                Id = 1,
-                Name = "Monaco",
-                City = "Monaco",
-                Country = "France",
-                Squad=players,
-                League = new League()
-            };
-
-            return monaco;
+            return player1;
         }
 
-        public List<Team> GetTeamsByLeagueId(int leagueId)
+        public List<Player> GetPlayersByTeam(int id)
         {
             Player player1 = new Player
             {
@@ -115,9 +87,7 @@ namespace DVSleague.Repository3
             league1.MVP = player1;
             league1.Teams = teams;
 
-            return league1.Teams;
+            return team1.Squad;
         }
     }
-
- 
 }

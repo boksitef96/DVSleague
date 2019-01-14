@@ -1,0 +1,25 @@
+﻿
+@{      
+    ViewBag.Title = "ShowTeamsInLeague";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<DVSleague.Models.Team>
+
+<h1> All teams in league</h1>
+@{
+    foreach (var team in Model)
+    {
+        <h2>Team Details:</h2>
+
+        <div>Name: </div>
+        <div>@team.Name</div>
+
+        <div>Country: </div>
+        <div>@team.Country</div>
+
+        <div>City: </div>
+        <div>@team.City</div>
+
+        <a class="btn btn-primary" href="@Url.RouteUrl("show_players", new { teamId = team.Id})">Show players</a>
+    }
+}

@@ -25,5 +25,12 @@ namespace DVSleague.Controllers
             return View(league);
         }
 
+        [Route("league/{id}/teams", Name = "show_teams_in_league")]
+        public ActionResult ShowAllTeamsInLeague(int id)
+        {
+            League league = leagueRepository.GetLeagueById(id);
+            return View("~/Views/Team/ShowTeamsInLeague.cshtml", league.Teams);
+        }
+
     }
 }
