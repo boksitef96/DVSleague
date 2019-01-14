@@ -1,4 +1,6 @@
-﻿using Neo4jClient;
+﻿using DVSleague.Models;
+using DVSleague.Repository;
+using Neo4jClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
