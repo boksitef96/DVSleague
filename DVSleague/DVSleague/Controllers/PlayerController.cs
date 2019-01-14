@@ -42,7 +42,19 @@ namespace DVSleague.Controllers
             return View(players);
         }
 
+        [Route("add-new-player", Name = "add_new_player")]
+        public ActionResult AddNewPlayer()
+        {
+            return View();
+        }
 
+        [Route("add-player")]
+        public ActionResult AddPlayer(Player player)
+        {
+            
+            //function for add new league in neo4j
+            return RedirectToAction("PlayerDetails", new { id = player.Id });
+        }
 
     }
 }

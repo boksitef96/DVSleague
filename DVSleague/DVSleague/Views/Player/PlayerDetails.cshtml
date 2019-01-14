@@ -7,29 +7,44 @@
 @model DVSleague.Models.Player
 
 <div class="playerBorder">
-    <h2>Player:</h2>
+    <div class="playerBox">
+        <h2>Player :</h2>
 
-    <h4>First Name: </h4>
-    <h4>@Model.FirstName</h4>
+        <div class="rowBorder">
+            <span>First Name:</span>
+            <span class="fontBold">@Model.FirstName</span>
+        </div>
+        <div class="rowBorder">
+            <span>Last Name:</span>
+            <span class="fontBold">@Model.LastName</span>
+        </div>
 
-    <h4>Last Name: </h4>
-    <h4>@Model.LastName</h4>
+        <div class="rowBorder">
+            <span>Date Of Birth:</span>
+            <span class="fontBold">@Model.DateOfBirth</span>
+        </div>
+        <div class="rowBorder">
+            <span>Nationality:</span>
+            <span class="fontBold">@Model.Nationality</span>
+        </div>
+        <div class="rowBorder">
+            <span>Height:</span>
+            <span class="fontBold">@Model.Height</span>
+        </div>
+        <div class="rowBorder">
+            <span>Weight:</span>
+            <span class="fontBold">@Model.Weight</span>
+        </div>
+        <div class="rowBorder">
+            <span>Goals:</span>
+            <span class="fontBold">@Model.Goals</span>
+            <i class="fa fa-futbol-o"></i>
+        </div>
+        <div class="rowBorder">
+            <span>Assists:</span>
+            <span class="fontBold">@Model.Assists</span>
+            
+        </div>
 
-    <h4>Date Of Birth: </h4>
-    <h4>@Model.DateOfBirth</h4>
-
-    <h4>Nationality: </h4>
-    <h4>@Model.Nationality</h4>
-
-    <h4>Height: </h4>
-    <h4>@Model.Height</h4>
-
-    <h4>Weight: </h4>
-    <h4>@Model.Weight</h4>
-
-    <h4>Goals: </h4>
-    <h4>@Model.Goals</h4>
-
-    <h4>Assists: </h4>
-    <h4>@Model.Assists</h4>
-</div>
+    </div>
+    </div>
