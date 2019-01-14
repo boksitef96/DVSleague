@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Leagues";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<DVSleague.Models.League>
+
+<h2>All leagues:</h2>
+
+<div class="row">
+    @{
+        foreach (var league in Model)
+        {
+            <div class="col-lg-3 playerBorder">
+                <div>
+                    <span>Name: </span>
+                    <span>@league.Name</span>
+
+                    <div>Number of teams: </div>
+                    <span>@league.Teams.Count</span>
+                </div>
+                
+                <a class="btn btn-primary" href="@Url.RouteUrl("show_league_details",new {id=league.Id})">Show league</a>
+            </div>
+        }
+    }
+</div>

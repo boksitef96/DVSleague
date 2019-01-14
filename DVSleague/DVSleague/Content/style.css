@@ -1,8 +1,22 @@
 ﻿body {
 }
 
+
+
 .playerBorder{
     background-color:skyblue;
     border:1px solid blue;
     margin:10px;
+}
+.rowBorder {
+    background-color: aliceblue;
+    border: 1px solid black;
+    margin: 5px;
+    border-radius: 5px;
+}
+.fontBold {
+    font-weight: bold;
+}
+.playerBox {
+    text-align:center;
 }

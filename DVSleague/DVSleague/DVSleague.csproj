@@ -203,6 +203,8 @@
     <Content Include="Views\Player\ShowPlayersByTeam.cshtml" />
     <Content Include="Views\League\ShowLeagueDetails.cshtml" />
     <Content Include="Views\Team\ShowTeamsInLeague.cshtml" />
+    <Content Include="Views\League\ShowAllLeagues.cshtml" />
+    <Content Include="Views\Player\AddNewPlayer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
