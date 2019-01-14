@@ -33,17 +33,20 @@ namespace DVSleague.Controllers
             return View(players);
         }
 
-        [Route("add-new-player", Name = "add_new_player")]
-        public ActionResult AddNewPlayer()
+        [Route("team/{teamId}/add-new-player", Name = "add_new_player")]
+        public ActionResult AddNewPlayer(int teamId)
         {
+            ViewBag.TeamId = teamId;
             return View();
         }
 
         [Route("add-player")]
-        public ActionResult AddPlayer(Player player)
+        public ActionResult AddPlayer(Player player, int teamId)
         {
-            
-            //function for add new league in neo4j
+            Team team = TeamRepository.getTeamById(teamId);
+            player.Team = team;
+            //function for add new player in neo4j
+
             return RedirectToAction("PlayerDetails", new { id = player.Id });
         }
 

@@ -40,7 +40,7 @@ namespace DVSleague.Controllers
         {
             League league = LeagueRepository.GetLeagueById(leagueId);
             team.League = league;
-            //function for add new league in neo4j
+            //function for add new team in neo4j
 
             return RedirectToAction("TeamDetails", new { id = team.Id });
         }

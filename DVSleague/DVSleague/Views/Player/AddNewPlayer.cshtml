@@ -7,7 +7,7 @@
 
 <h2>Add new player</h2>
 
-@using (@Html.BeginForm("AddPlayer", "Player", new { }, FormMethod.Post, null))
+@using (@Html.BeginForm("AddPlayer", "Player", new { teamId = ViewBag.TeamId }, FormMethod.Post, null))
 {
     <div class="form-group">
         <label>First name:</label>

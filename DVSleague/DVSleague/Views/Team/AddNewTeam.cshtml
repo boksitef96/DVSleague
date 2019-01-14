@@ -7,7 +7,7 @@
 
 <h2>Add new team</h2>
 
-@using (@Html.BeginForm("AddTeam", "Team", new { ViewBag.LeagueId }, FormMethod.Post, null))
+@using (@Html.BeginForm("AddTeam", "Team", new { leagueId = ViewBag.LeagueId }, FormMethod.Post, null))
 {
     <div class="form-group">
         <label>Team name:</label>
