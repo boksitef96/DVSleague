@@ -10,25 +10,18 @@ namespace DVSleague.Controllers
 {
     public class TeamController : Controller
     {
+        private TeamRepository TeamRepository = new TeamRepository();
+        
         // GET: Team
         public ActionResult Index()
         {
             return View();
         }
 
-
-        [Route("team", Name = "team_details")]
-        public ActionResult TeamDetails() //     view/home/Team/PlayerDetails
+        [Route("team/{id}", Name = "team_details")]
+        public ActionResult TeamDetails(int id) //     view/home/Team/PlayerDetails
         {
-            TeamRepository teamRepository = new TeamRepository();
-
-            Team team = new Team();
-
-            team=teamRepository.getTeamById(2);
-
-
-            ViewBag.Message = "Your application description page." + "dsddsd";
-
+            Team team = TeamRepository.getTeamById(2);
             return View(team);
         }
     }
