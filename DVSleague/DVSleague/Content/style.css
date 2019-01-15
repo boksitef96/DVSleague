@@ -33,6 +33,7 @@
     min-width: 1550px;
     background-image: url(images/pic.jpg);
     background-size: 1550px 750px;
+    color:black;
 }
 .templatesWrapper {
     min-height: 450px;
