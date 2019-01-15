@@ -6,19 +6,11 @@
 
 @model DVSleague.Models.Player
 
-<div class="playerBorder">
-    <div class="playerBox">
-        <h2>Player :</h2>
-
-        <div class="rowBorder">
-            <span>First Name:</span>
-            <span class="fontBold">@Model.FirstName</span>
-        </div>
-        <div class="rowBorder">
-            <span>Last Name:</span>
-            <span class="fontBold">@Model.LastName</span>
-        </div>
-
+<div>
+    <div class="textAlign">
+        
+        <span class="fontBold fontSize">@Model.FirstName</span> 
+        <span class="fontBold fontSize">@Model.LastName</span>
         <div class="rowBorder">
             <span>Date Of Birth:</span>
             <span class="fontBold">@Model.DateOfBirth.ToString("dd/MM/yyyy")</span>

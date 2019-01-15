@@ -6,13 +6,13 @@
 
 @model List<DVSleague.Models.Player>
 
-<h2>Players from team:</h2>
+<h2 class="textAlign">Players from team:</h2>
 
 <div class="row">
     @{
         foreach (var player in Model)
         {
-            <div class="col-lg-3 playerBorder">
+            <div class="col-lg-3 border">
                 <div>
                     <span>First Name: </span>
                     <span class="fontBold">@player.FirstName</span>
@@ -47,6 +47,7 @@
                 </div>
                 <div>
                     <a class="btn btn-success floatRight margin" href="@Url.RouteUrl("player_details",new {id=@player.Id})">Show details</a>
+                    <a class="btn btn-danger floatRight margin" href="@Url.RouteUrl("delete_player",new {id= ViewBag.TeamId})">Delete player</a>
                 </div>
             </div>
         }

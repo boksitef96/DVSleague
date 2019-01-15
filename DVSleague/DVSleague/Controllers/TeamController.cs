@@ -26,11 +26,18 @@ namespace DVSleague.Controllers
             return View(team);
         }
         
-        [Route("league/{leagueId}/add-new-team")]
+        [Route("league/{leagueId}/add-new-team", Name = "add_new_team")]
         public ActionResult AddNewTeam(int leagueId)
         {
             ViewBag.LeagueId = leagueId;
             return View();
+        }
+
+        [Route("delete-team/{id}", Name = "delete_team")]
+        public ActionResult DeleteTeam(int id)
+        {
+            //pozvat funkciju iz baze
+            return RedirectToAction("ShowAllLeagues");
         }
 
         [HttpPost]
