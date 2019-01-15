@@ -29,6 +29,8 @@ namespace DVSleague.Controllers
         public ActionResult ShowAllTeamsInLeague(int id)
         {
             League league = leagueRepository.GetLeagueById(id);
+
+            ViewBag.LeagueId = id;
             return View("~/Views/Team/ShowTeamsInLeague.cshtml", league.Teams);
         }
 
@@ -38,6 +40,13 @@ namespace DVSleague.Controllers
             List<League> list = new List<League>();
             list = leagueRepository.GetAllLeagues();
             return View(list);
+        }
+
+        [Route("delete-league/{id}", Name = "delete_league")]
+        public ActionResult DeleteLeague(int id)
+        {
+            //pozvati delete iz baze
+            return RedirectToAction("ShowAllLeagues");
         }
 
         [Route("add-new-league")]

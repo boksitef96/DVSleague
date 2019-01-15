@@ -5,9 +5,9 @@
 }
 @model DVSleague.Models.League
     
-<h2>ShowLeagueDetails</h2>
+<h2 class="textAlign">League Details</h2>
 
-<div class="border playerBox">
+<div class="border textAlign">
     <div class="margin">
         League name: <span class="fontBold">@Model.Name</span>
     </div>
@@ -22,7 +22,7 @@
                 {
                     @Model.TopScorer.FirstName @Model.TopScorer.LastName
                 }
-             }
+            }
         </span>
     </div>
     <div class="margin">
@@ -48,5 +48,6 @@
         </span>
     </div>
     <a class="btn btn-success margin" href="@Url.RouteUrl("show_teams_in_league", new { id = Model.Id })">Show all teams in league</a>
+    <a class="btn btn-success margin" href="@Url.RouteUrl("add_new_team", new { leagueId = Model.Id })">Add new team</a>
 </div>
 

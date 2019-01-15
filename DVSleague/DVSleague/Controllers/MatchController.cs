@@ -7,7 +7,6 @@ using DVSleague.Models;
 using DVSleague.ViewModel;
 using DVSleague.Services;
 using DVSleague.Repository;
-using DVSleague.Repository3;
 
 namespace DVSleague.Controllers
 {

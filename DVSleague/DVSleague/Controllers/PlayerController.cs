@@ -30,6 +30,7 @@ namespace DVSleague.Controllers
         public ActionResult ShowPlayersByTeam(int teamId)        //  view/home/Player/ShowPlayersByTeam
         {
             List<Player> players = PlayerRepository.GetPlayersByTeamId(teamId);
+            ViewBag.TeamId= teamId;
             return View(players);
         }
 
@@ -48,6 +49,13 @@ namespace DVSleague.Controllers
             //function for add new player in neo4j
             PlayerRepository.AddNewPlayer(player, teamId);
             return RedirectToAction("PlayerDetails", new { id = player.Id });
+        }
+        [Route("delete-player/{id}", Name= "delete_player")]
+        public ActionResult DeletePlayer(int id)
+        {
+            //pozvati funkciju iz baze
+           
+            return RedirectToAction("ShowPlayersByTeam", new { teamId = id });
         }
 
     }

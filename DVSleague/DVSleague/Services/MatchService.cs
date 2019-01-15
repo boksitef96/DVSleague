@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using DVSleague.Models;
 using DVSleague.Repository;
-using DVSleague.Repository3;
 
 namespace DVSleague.Services
 {

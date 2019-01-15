@@ -147,7 +147,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MatchController.cs" />
-    <Compile Include="Repository3\MatchRepository.cs" />
     <Compile Include="Repository\LeagueRepository.cs" />
     <Compile Include="Repository\MatchRepository.cs" />
     <Compile Include="Repository\PlayerRepository.cs" />
