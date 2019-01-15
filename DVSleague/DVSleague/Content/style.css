@@ -1,18 +1,17 @@
 ﻿body {
 }
 
-
-
-.playerBorder{
-    background-color:skyblue;
-    border:1px solid blue;
-    margin:10px;
+.playerBorder {
+    background-color: #9EFF9E;
+    border: 1px solid green;
+    margin: 10px;
+    border-radius: 4px;
 }
 .rowBorder {
     background-color: aliceblue;
     border: 1px solid black;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 4px;
 }
 .fontBold {
     font-weight: bold;
@@ -20,3 +19,20 @@
 .playerBox {
     text-align:center;
 }
+.border {
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+.margin{
+    margin:7px;
+}
+.floatRight{
+    float:right;
+}
+.backgroundImage{
+    /*background-image:url("~/Content/Images/pic.jpg");*/
+    background-color:aqua;
+
+}
+

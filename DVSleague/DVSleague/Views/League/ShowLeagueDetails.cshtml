@@ -7,22 +7,22 @@
     
 <h2>ShowLeagueDetails</h2>
 
-<div>
-    <div>
-        League name: <span>@Model.Name</span>
+<div class="border playerBox">
+    <div class="margin">
+        League name: <span class="fontBold">@Model.Name</span>
     </div>
-    <div>
-        Country: <span>@Model.Country</span>
+    <div class="margin">
+        Country: <span class="fontBold">@Model.Country</spanclass="fontBold">
     </div>
-    <div>
-        Top scorer: <span>@Model.TopScorer.FirstName @Model.TopScorer.LastName</span>
+    <div class="margin">
+        Top scorer: <span class="fontBold">@Model.TopScorer.FirstName @Model.TopScorer.LastName</span>
     </div>
-    <div>
-        Top assistant: <span>@Model.TopAssistant.FirstName @Model.TopAssistant.LastName</span>
+    <div class="margin">
+        Top assistant: <span class="fontBold">@Model.TopAssistant.FirstName @Model.TopAssistant.LastName</span>
     </div>
-    <div>
-        MVP: <span>@Model.MVP.FirstName @Model.MVP.LastName</span>
+    <div class="margin">
+        MVP: <span class="fontBold">@Model.MVP.FirstName @Model.MVP.LastName</span>
     </div>
-    <a class="btn btn-primary" href="@Url.RouteUrl("show_teams_in_league", new { id = Model.Id })">Show all teams in league</a>
+    <a class="btn btn-success margin" href="@Url.RouteUrl("show_teams_in_league", new { id = Model.Id })">Show all teams in league</a>
 </div>
 
