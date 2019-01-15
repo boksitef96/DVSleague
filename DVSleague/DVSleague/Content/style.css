@@ -1,6 +1,4 @@
-﻿body {
-}
-
+﻿
 .playerBorder {
     background-color: #9EFF9E;
     border: 1px solid green;
@@ -24,15 +22,20 @@
     border: 1px solid black;
     border-radius: 4px;
 }
-.margin{
+.margin {
     margin:7px;
 }
-.floatRight{
+.floatRight {
     float:right;
 }
-.backgroundImage{
-    /*background-image:url("~/Content/Images/pic.jpg");*/
-    background-color:aqua;
-
+.backgroundImage {
+    min-height: 700px;
+    min-width: 1550px;
+    background-image: url(images/pic.jpg);
+    background-size: 1550px 750px;
 }
-
+.templatesWrapper {
+    min-height: 450px;
+    min-width: 800px;
+    background-image: linear-gradient(rgba(102, 0, 204, 0.8), rgba(0, 153, 0, 0.8));
+}
