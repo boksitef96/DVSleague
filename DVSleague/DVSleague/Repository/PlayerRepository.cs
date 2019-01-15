@@ -11,7 +11,7 @@ namespace DVSleague.Repository
 {
     public class PlayerRepository : Repository
     {
-        public void InsertPlayer(Player player)
+        public void AddNewPlayer(Player player, int teamId)
         {
             int maxId = GetMaxId();
             player.Id = ++maxId;
@@ -42,7 +42,7 @@ namespace DVSleague.Repository
             var query = new Neo4jClient.Cypher.CypherQuery(prepareQuery, queryDict, CypherResultMode.Set);
             List<Player> players = ((IRawGraphClient)client).ExecuteGetCypherResults<Player>(query).ToList();
 
-            string relationQuery = "MATCH (p:Player),(t:Team) WHERE p.Id = " + player.Id + "  AND t.Id = " + player.Team.Id 
+            string relationQuery = "MATCH (p:Player),(t:Team) WHERE p.Id = " + player.Id + "  AND t.Id = " + teamId
                                  + " CREATE(p) -[m: member]->(t) RETURN type(m)";
 
             query = new Neo4jClient.Cypher.CypherQuery(relationQuery, queryDict, CypherResultMode.Set);
@@ -58,7 +58,7 @@ namespace DVSleague.Repository
             players = ((IRawGraphClient)client).ExecuteGetCypherResults<Player>(query).ToList();
             return players;
         }
-        public List<Player> GetPlayersByTeam(int teamId)
+        public List<Player> GetPlayersByTeamId(int teamId)
         {
             List<Player> players;
             var query = new Neo4jClient.Cypher.CypherQuery("MATCH (t:Team { Id:" + teamId + "})<-[:member]-(player) RETURN player",
@@ -68,7 +68,7 @@ namespace DVSleague.Repository
             players = ((IRawGraphClient)client).ExecuteGetCypherResults<Player>(query).ToList();
             return players;
         }
-        public Player GetPlayer(int playerId)
+        public Player GetPlayerById(int playerId)
         {
             Player player;
             var query = new Neo4jClient.Cypher.CypherQuery("MATCH (p:Player) WHERE p.Id = " + playerId + "  RETURN p",

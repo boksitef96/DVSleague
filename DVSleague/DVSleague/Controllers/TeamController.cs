@@ -4,9 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DVSleague.Models;
-using DVSleague.Repository3;
-using DVSleague.Repository2
-    ;
+using DVSleague.Repository;
+
 namespace DVSleague.Controllers
 {
     public class TeamController : Controller
@@ -23,7 +22,7 @@ namespace DVSleague.Controllers
         [Route("team/{id}", Name = "team_details")]
         public ActionResult TeamDetails(int id)
         {
-            Team team = TeamRepository.getTeamById(2);
+            Team team = TeamRepository.GetTeamById(id);
             return View(team);
         }
         
@@ -41,7 +40,7 @@ namespace DVSleague.Controllers
             League league = LeagueRepository.GetLeagueById(leagueId);
             team.League = league;
             //function for add new team in neo4j
-
+            team = TeamRepository.AddNewTeam(team, leagueId);
             return RedirectToAction("TeamDetails", new { id = team.Id });
         }
     }

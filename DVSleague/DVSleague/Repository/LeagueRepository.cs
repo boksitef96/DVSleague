@@ -10,7 +10,7 @@ namespace DVSleague.Repository
 {
     public class LeagueRepository : Repository
     {
-        public void InsertLeague(League league)
+        public void AddNewLeague(League league)
         {
             int maxId = GetMaxId();
             league.Id = ++maxId;
@@ -38,7 +38,7 @@ namespace DVSleague.Repository
             leagues = ((IRawGraphClient)client).ExecuteGetCypherResults<League>(query).ToList();
             return leagues;
         }
-        public League GetLeague(int leagueId)
+        public League GetLeagueById(int leagueId)
         {
             League league = new League();
             var query = new Neo4jClient.Cypher.CypherQuery("MATCH (l:League) WHERE l.Id = " + leagueId + "  RETURN l",
