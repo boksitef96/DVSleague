@@ -12,16 +12,40 @@
         League name: <span class="fontBold">@Model.Name</span>
     </div>
     <div class="margin">
-        Country: <span class="fontBold">@Model.Country</spanclass="fontBold">
+        Country: <span class="fontBold">@Model.Country</span>
     </div>
     <div class="margin">
-        Top scorer: <span class="fontBold">@Model.TopScorer.FirstName @Model.TopScorer.LastName</span>
+        Top scorer:
+        <span class="fontBold">
+            @{
+                if (Model.TopScorer != null)
+                {
+                    @Model.TopScorer.FirstName @Model.TopScorer.LastName
+                }
+             }
+        </span>
     </div>
     <div class="margin">
-        Top assistant: <span class="fontBold">@Model.TopAssistant.FirstName @Model.TopAssistant.LastName</span>
+        Top assistant:
+        <span class="fontBold">
+            @{
+                if (Model.TopAssistant != null)
+                {
+                    @Model.TopAssistant.FirstName @Model.TopAssistant.LastName
+                }
+            }
+        </span>
     </div>
     <div class="margin">
-        MVP: <span class="fontBold">@Model.MVP.FirstName @Model.MVP.LastName</span>
+        MVP:
+        <span class="fontBold">
+            @{
+                if (Model.MVP != null)
+                {
+                    @Model.MVP.FirstName @Model.MVP.LastName
+                }
+            }
+        </span>
     </div>
     <a class="btn btn-success margin" href="@Url.RouteUrl("show_teams_in_league", new { id = Model.Id })">Show all teams in league</a>
 </div>

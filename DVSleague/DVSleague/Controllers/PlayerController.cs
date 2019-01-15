@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DVSleague.Models;
-using DVSleague.Repository3;
+using DVSleague.Repository;
 
 namespace DVSleague.Controllers
 {
@@ -29,7 +29,7 @@ namespace DVSleague.Controllers
         [Route("team/{teamId}/players", Name = "show_players")]
         public ActionResult ShowPlayersByTeam(int teamId)        //  view/home/Player/ShowPlayersByTeam
         {
-            List<Player> players = PlayerRepository.GetPlayersByTeam(1);
+            List<Player> players = PlayerRepository.GetPlayersByTeamId(teamId);
             return View(players);
         }
 
@@ -43,10 +43,10 @@ namespace DVSleague.Controllers
         [Route("add-player")]
         public ActionResult AddPlayer(Player player, int teamId)
         {
-            Team team = TeamRepository.getTeamById(teamId);
+            Team team = TeamRepository.GetTeamById(teamId);
             player.Team = team;
             //function for add new player in neo4j
-
+            PlayerRepository.AddNewPlayer(player, teamId);
             return RedirectToAction("PlayerDetails", new { id = player.Id });
         }
 

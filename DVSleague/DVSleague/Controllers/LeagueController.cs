@@ -1,5 +1,5 @@
 ﻿using DVSleague.Models;
-using DVSleague.Repository2;
+using DVSleague.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace DVSleague.Controllers
         [Route("league/{id}", Name = "show_league_details")]
         public ActionResult ShowLeagueDetails(int id)
         {
-            League league = leagueRepository.GetLeagueById(1);
+            League league = leagueRepository.GetLeagueById(id);
             return View(league);
         }
 
@@ -51,6 +51,7 @@ namespace DVSleague.Controllers
         public ActionResult AddLeague(League league)
         {
             //function for add new league in neo4j
+            leagueRepository.AddNewLeague(league);
             return RedirectToAction("ShowLeagueDetails", new { id = league.Id });
         }
     }
