@@ -83,6 +83,16 @@ namespace DVSleague.Repository
             List<Team> teams = ((IRawGraphClient)client).ExecuteGetCypherResults<Team>(query).ToList();
             player.Team = teams[0];
 
+            query = new Neo4jClient.Cypher.CypherQuery("MATCH (p:Player { Id: " + player.Id + " })-[s:scorer]->() RETURN count(*)",
+                                                        new Dictionary<string, object>(), CypherResultMode.Set);
+            int goals = ((IRawGraphClient)client).ExecuteGetCypherResults<int>(query).ToList().FirstOrDefault();
+            player.Goals = goals;
+
+            query = new Neo4jClient.Cypher.CypherQuery("MATCH (p:Player { Id: " + player.Id + " })-[a:assistent]->() RETURN count(*)",
+                                                       new Dictionary<string, object>(), CypherResultMode.Set);
+            int assists = ((IRawGraphClient)client).ExecuteGetCypherResults<int>(query).ToList().FirstOrDefault();
+            player.Assists = assists;
+
             return player;
         }
         private int GetMaxId()
@@ -94,11 +104,37 @@ namespace DVSleague.Repository
             {
                 maxId = ((IRawGraphClient)client).ExecuteGetCypherResults<int>(query).ToList().FirstOrDefault();
             }
-            catch (Exception e)
+            catch
             {
                 maxId = 0;
             }
             return maxId;
+        }
+        public void IncrementPlayerGoals(int playerId)
+        {
+            var query = new Neo4jClient.Cypher.CypherQuery("MATCH (p:Player { Id:" + playerId + " }) return p.Goals",
+                                                 new Dictionary<string, object>(), CypherResultMode.Set);
+            int goals = ((IRawGraphClient)client).ExecuteGetCypherResults<int>(query).ToList().FirstOrDefault();
+
+            query = new Neo4jClient.Cypher.CypherQuery("MATCH (p:Player { Id:" + playerId + " }) set p.Goals=" + (++goals),
+                                                new Dictionary<string, object>(), CypherResultMode.Set);
+            ((IRawGraphClient)client).ExecuteCypher(query);
+        }
+        public void IncrementPlayerAssists(int playerId)
+        {
+            var query = new Neo4jClient.Cypher.CypherQuery("MATCH (p:Player { Id:" + playerId + " }) return p.Assists",
+                                                 new Dictionary<string, object>(), CypherResultMode.Set);
+            int assists = ((IRawGraphClient)client).ExecuteGetCypherResults<int>(query).ToList().FirstOrDefault();
+
+            query = new Neo4jClient.Cypher.CypherQuery("MATCH (p:Player { Id:" + playerId + " }) set p.Assists=" + (++assists) ,
+                                           new Dictionary<string, object>(), CypherResultMode.Set);
+            ((IRawGraphClient)client).ExecuteCypher(query);
+        }
+        public void DeletePlayerById(int playerId)
+        {
+            var query = new Neo4jClient.Cypher.CypherQuery("MATCH (p:Player { Id:" + playerId + " }) DETACH DELETE p",
+                                                            new Dictionary<string, object>(), CypherResultMode.Set);
+            ((IRawGraphClient)client).ExecuteCypher(query);
         }
     }
 }

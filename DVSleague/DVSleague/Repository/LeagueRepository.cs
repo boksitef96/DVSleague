@@ -60,26 +60,46 @@ namespace DVSleague.Repository
                 league.Teams = teams;
             }
 
+            //top skorer
             query = new Neo4jClient.Cypher.CypherQuery("MATCH (l:League {Id:" + league.Id + "})<-[:participates]-(t:Team)<-[:member]-(p:Player)"
                                                         + " return p ORDER BY p.Goals LIMIT 1",
-                                                    new Dictionary<string, object>(),
-                                                    CypherResultMode.Set);
+                                                        new Dictionary<string, object>(),
+                                                        CypherResultMode.Set);
             List<Player> players = ((IRawGraphClient)client).ExecuteGetCypherResults<Player>(query).ToList();
             if (players.Count != 0)
             {
                 league.TopScorer = players[0];
             }
+
+            //top asistent
             query = new Neo4jClient.Cypher.CypherQuery("MATCH (l:League {Id:" + league.Id + "})<-[:participates]-(t:Team)<-[:member]-(p:Player)"
-                                                     + " return p ORDER BY p.Assists LIMIT 1",
-                                                 new Dictionary<string, object>(),
-                                                 CypherResultMode.Set);
+                                                        + " return p ORDER BY p.Assists LIMIT 1",
+                                                        new Dictionary<string, object>(),
+                                                        CypherResultMode.Set);
             players = ((IRawGraphClient)client).ExecuteGetCypherResults<Player>(query).ToList();
             if (players.Count != 0)
             {
                 league.TopAssistant = players[0];
             }
 
+            //mvp
+            query = new Neo4jClient.Cypher.CypherQuery("MATCH (l:League {Id:" + league.Id + "})<-[:participates]-(t:Team)<-[:member]-(p:Player)"
+                                                        +" return p ORDER BY (p.Assists + p.Goals) LIMIT 1",
+                                                        new Dictionary<string, object>(),
+                                                        CypherResultMode.Set);
+            players = ((IRawGraphClient)client).ExecuteGetCypherResults<Player>(query).ToList();
+            if (players.Count != 0)
+            {
+                league.MVP = players[0];
+            }
+
             return league;
+        }
+        public void DeleteLeagueById(int leagueId)
+        {
+            var query = new Neo4jClient.Cypher.CypherQuery("MATCH (l:League { Id:" + leagueId + " }) DETACH DELETE l",
+                               new Dictionary<string, object>(), CypherResultMode.Set);
+            ((IRawGraphClient)client).ExecuteCypher(query);
         }
         private int GetMaxId()
         {
@@ -90,7 +110,7 @@ namespace DVSleague.Repository
             {
                maxId = ((IRawGraphClient)client).ExecuteGetCypherResults<int>(query).ToList().FirstOrDefault();
             }
-            catch (Exception e)
+            catch
             {
                 maxId = 0;
             }
