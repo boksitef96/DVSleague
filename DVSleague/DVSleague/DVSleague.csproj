@@ -146,7 +146,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MatchController.cs" />
+    <Compile Include="Repository3\MatchRepository.cs" />
     <Compile Include="Repository\LeagueRepository.cs" />
+    <Compile Include="Repository\MatchRepository.cs" />
     <Compile Include="Repository\PlayerRepository.cs" />
     <Compile Include="Controllers\LeagueController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
@@ -162,8 +165,11 @@
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\TeamRepository.cs" />
     <Compile Include="Repository2\LeagueRepository.cs" />
-    <Compile Include="Repository3\PlayerRepository.cs" />
-    <Compile Include="Repository3\TeamRepository.cs" />
+    <Compile Include="Services\LeagueService.cs" />
+    <Compile Include="Services\MatchService.cs" />
+    <Compile Include="Services\PlayerService.cs" />
+    <Compile Include="Services\TeamService.cs" />
+    <Compile Include="ViewModel\AddNewMatchChoices.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -222,6 +228,9 @@
     <Content Include="Views\Player\AddNewPlayer.cshtml" />
     <Content Include="Views\League\AddNewLeague.cshtml" />
     <Content Include="Views\Team\AddNewTeam.cshtml" />
+    <Content Include="Views\Match\AddNewMatch.cshtml" />
+    <Content Include="Views\Match\AddDetailsForMatch.cshtml" />
+    <Content Include="Views\Match\ShowMatchesByLeague.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

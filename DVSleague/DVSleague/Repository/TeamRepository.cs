@@ -97,11 +97,17 @@ namespace DVSleague.Repository
             {
                 maxId = ((IRawGraphClient)client).ExecuteGetCypherResults<int>(query).ToList().FirstOrDefault();
             }
-            catch(Exception e)
+            catch
             {
                 maxId = 0;
             }
             return maxId;
+        }
+        public void DeleteTeamById(int teamId)
+        {
+            var query = new Neo4jClient.Cypher.CypherQuery("MATCH (t:Team { Id:" + teamId + " }) DETACH DELETE t",
+                                                            new Dictionary<string, object>(), CypherResultMode.Set);
+            ((IRawGraphClient)client).ExecuteCypher(query);
         }
     }
 }

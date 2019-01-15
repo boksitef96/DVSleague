@@ -50,7 +50,6 @@ namespace DVSleague.Controllers
         [Route("add-league", Name = "add_league")]
         public ActionResult AddLeague(League league)
         {
-            //function for add new league in neo4j
             leagueRepository.AddNewLeague(league);
             return RedirectToAction("ShowLeagueDetails", new { id = league.Id });
         }

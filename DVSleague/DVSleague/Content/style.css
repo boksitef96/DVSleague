@@ -39,4 +39,6 @@
     min-height: 450px;
     min-width: 800px;
     background-image: linear-gradient(rgba(102, 0, 204, 0.8), rgba(0, 153, 0, 0.8));
+    border-radius: 30px;
+    margin: 20px;
 }
