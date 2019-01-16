@@ -53,11 +53,11 @@ namespace DVSleague.Controllers
             return RedirectToAction("PlayerDetails", new { id = player.Id });
         }
         [Route("delete-player/{id}", Name= "delete_player")]
-        public ActionResult DeletePlayer(int id)
+        public ActionResult DeletePlayer(int id,int tId)
         {
             PlayerService.DeletePlayerById(id);
            
-            return RedirectToAction("ShowPlayersByTeam", new { teamId = id });
+            return RedirectToAction("ShowPlayersByTeam", new { teamId = tId });
         }
 
     }
