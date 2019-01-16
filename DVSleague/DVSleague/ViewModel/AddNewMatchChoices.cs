@@ -12,6 +12,7 @@ namespace DVSleague.ViewModel
         public Match Match { get; set; }
         public IEnumerable<SelectListItem> Teams { get; set; }
         public IEnumerable<SelectListItem> Players { get; set; }
-
+        public List<int> Scorers { get; set; }
+        public List<int> Assistants { get; set; }
     }
 }

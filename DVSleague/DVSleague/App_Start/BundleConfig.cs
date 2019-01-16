@@ -10,7 +10,8 @@ namespace DVSleague
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/jquery-ui.js"
+                        "~/Scripts/jquery-ui.js",
+                        "~/Scripts/select2.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -28,7 +29,8 @@ namespace DVSleague
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/style.css",
-                      "~/Content/jquery-ui.css"
+                      "~/Content/jquery-ui.css",
+                      "~/Content/css/select2.css"
                       ));
         }
     }

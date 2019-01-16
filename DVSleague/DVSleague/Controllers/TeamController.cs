@@ -5,13 +5,15 @@ using System.Web;
 using System.Web.Mvc;
 using DVSleague.Models;
 using DVSleague.Repository;
+using DVSleague.Services;
 
 namespace DVSleague.Controllers
 {
     public class TeamController : Controller
     {
         private TeamRepository TeamRepository = new TeamRepository();
-        private LeagueRepository LeagueRepository = new LeagueRepository(); 
+        private LeagueRepository LeagueRepository = new LeagueRepository();
+        private TeamService TeamService = new TeamService();
         
         // GET: Team
         public ActionResult Index()
@@ -36,8 +38,8 @@ namespace DVSleague.Controllers
         [Route("delete-team/{id}", Name = "delete_team")]
         public ActionResult DeleteTeam(int id)
         {
-            //pozvat funkciju iz baze
-            return RedirectToAction("ShowAllLeagues");
+            TeamService.DeleteTeamById(id);
+            return RedirectToAction("ShowAllLeagues", "League");
         }
 
         [HttpPost]

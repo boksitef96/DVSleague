@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DVSleague.Services;
 
 namespace DVSleague.Controllers
 {
     public class LeagueController : Controller
     {
         private LeagueRepository leagueRepository = new LeagueRepository();
+        private LeagueService leagueService = new LeagueService();
 
         // GET: League
         public ActionResult Index()
@@ -45,7 +47,7 @@ namespace DVSleague.Controllers
         [Route("delete-league/{id}", Name = "delete_league")]
         public ActionResult DeleteLeague(int id)
         {
-            //pozvati delete iz baze
+            leagueService.DeleteLeagueById(id);
             return RedirectToAction("ShowAllLeagues");
         }
 

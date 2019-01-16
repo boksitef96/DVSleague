@@ -25,7 +25,7 @@
                     <a class="btn btn-primary btn-block btn-xs" href="@Url.RouteUrl("team_details", new { id = team.Id})">Show details</a>
                     <a class="btn btn-success btn-block btn-xs" href="@Url.RouteUrl("add_new_player", new { teamId = team.Id})">Add player</a>
                     <a class="btn btn-success btn-block btn-xs" href="@Url.RouteUrl("show_players", new { teamId = team.Id})">Show players</a>
-                    <a class="btn btn-danger btn-block btn-xs" href="@Url.RouteUrl("show_teams_in_league", new { id = ViewBag.LeagueId})">Delete team</a>
+                    <a class="btn btn-danger btn-block btn-xs" href="@Url.RouteUrl("delete_team", new { id = team.Id})">Delete team</a>
                 </div>
             </div>
         }
