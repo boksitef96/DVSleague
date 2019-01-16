@@ -39,8 +39,9 @@ namespace DVSleague.Controllers
         public ActionResult AddMatch(AddNewMatchChoices model, int leagueId)
         {
             Match match = model.Match;
-            //MatchService.AddNewMatch(match, leagueId, match.HomeTeam.Id, match.AwayTeam.Id);
-            return RedirectToAction("Index", "Home");
+            int matchId = MatchService.AddNewMatch(match, leagueId, match.HomeTeam.Id, match.AwayTeam.Id);
+
+            return RedirectToAction("AddDetailsForMatch", new { id =  matchId });
         }
 
         [Route("match/{id}/details", Name = "add_match_details")]
@@ -54,21 +55,28 @@ namespace DVSleague.Controllers
             {
                 Players = players
             };
-            return View(model); ;
+           
+            return View(model);
         }
 
         [Route("add-match-details")]
-        public ActionResult AddMatchDetails(AddNewMatchChoices model)
+        public ActionResult AddMatchDetails(AddNewMatchChoices model, int matchId)
         {
-
+            MatchService.AddScorersAndAssistants(matchId, model.Scorers, model.Assistants);
             return RedirectToAction("Index", "Home");
         }
 
-        [Route("league/{leagueId}/matches")]
+        [Route("league/{leagueId}/matches", Name = "league_matches")]
         public ActionResult ShowMatchesByLeague(int leagueId)
         {
             List<Match> matches = MatchRepository.GetAllMatchesByLeagueId(leagueId);
-            return View(matches);
+            List<Match> matchesModel = new List<Match>();
+            foreach (var match in matches)
+            {
+                Match matchObj = MatchRepository.GetMatchById(match.Id);
+                matchesModel.Add(matchObj);
+            }
+            return View(matchesModel);
         }
     }
 }

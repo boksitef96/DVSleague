@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using DVSleague.Models;
 using DVSleague.Repository;
+using DVSleague.Services;
 
 namespace DVSleague.Controllers
 {
@@ -12,6 +13,7 @@ namespace DVSleague.Controllers
     {
         private TeamRepository TeamRepository = new TeamRepository();
         private PlayerRepository PlayerRepository = new PlayerRepository();
+        private PlayerService PlayerService = new PlayerService();
         
         // GET: Player
         public ActionResult Index()
@@ -46,14 +48,14 @@ namespace DVSleague.Controllers
         {
             Team team = TeamRepository.GetTeamById(teamId);
             player.Team = team;
-            //function for add new player in neo4j
+            
             PlayerRepository.AddNewPlayer(player, teamId);
             return RedirectToAction("PlayerDetails", new { id = player.Id });
         }
         [Route("delete-player/{id}", Name= "delete_player")]
         public ActionResult DeletePlayer(int id)
         {
-            //pozvati funkciju iz baze
+            PlayerService.DeletePlayerById(id);
            
             return RedirectToAction("ShowPlayersByTeam", new { teamId = id });
         }

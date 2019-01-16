@@ -1,5 +1,7 @@
 ﻿
 @{
+    /**/
+
     ViewBag.Title = "AddNewMatch";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -11,17 +13,27 @@
 {
     <div class="form-group">
         <label>Home team:</label>
-        @Html.DropDownListFor(m => m.Match.HomeTeam.Id, Model.Teams, new { @class = "form-control"})
+        @Html.DropDownListFor(m => m.Match.HomeTeam.Id, Model.Teams, new { @class = "form-control" })
     </div>
 
     <div class="form-group">
         <label>Away team:</label>
-        @Html.DropDownListFor(m => m.Match.AwayTeam.Id, Model.Teams, new { @class = "form-control"})
+        @Html.DropDownListFor(m => m.Match.AwayTeam.Id, Model.Teams, new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        <label>Number of teams in league:</label>
+        <label>Match time:</label>
         @Html.TextBoxFor(m => m.Match.MatchTime, new { @class = "form-control datePicker" })
+    </div>
+
+    <div class="form-group">
+        <label>Home team score:</label>
+        @Html.TextBoxFor(m => m.Match.HomeScore, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Away team score:</label>
+        @Html.TextBoxFor(m => m.Match.AwayScore, new { @class = "form-control" })
     </div>
 
     <button type="submit" class="btn btn-primary">Save</button>

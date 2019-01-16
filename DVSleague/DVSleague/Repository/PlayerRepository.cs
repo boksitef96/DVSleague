@@ -130,11 +130,6 @@ namespace DVSleague.Repository
                                            new Dictionary<string, object>(), CypherResultMode.Set);
             ((IRawGraphClient)client).ExecuteCypher(query);
         }
-        public void DeletePlayerById(int playerId)
-        {
-            var query = new Neo4jClient.Cypher.CypherQuery("MATCH (p:Player { Id:" + playerId + " }) DETACH DELETE p",
-                                                            new Dictionary<string, object>(), CypherResultMode.Set);
-            ((IRawGraphClient)client).ExecuteCypher(query);
-        }
+        
     }
 }

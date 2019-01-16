@@ -62,7 +62,7 @@ namespace DVSleague.Repository
 
             //top skorer
             query = new Neo4jClient.Cypher.CypherQuery("MATCH (l:League {Id:" + league.Id + "})<-[:participates]-(t:Team)<-[:member]-(p:Player)"
-                                                        + " return p ORDER BY p.Goals LIMIT 1",
+                                                        + " return p ORDER BY p.Goals DESC LIMIT 1",
                                                         new Dictionary<string, object>(),
                                                         CypherResultMode.Set);
             List<Player> players = ((IRawGraphClient)client).ExecuteGetCypherResults<Player>(query).ToList();
@@ -73,7 +73,7 @@ namespace DVSleague.Repository
 
             //top asistent
             query = new Neo4jClient.Cypher.CypherQuery("MATCH (l:League {Id:" + league.Id + "})<-[:participates]-(t:Team)<-[:member]-(p:Player)"
-                                                        + " return p ORDER BY p.Assists LIMIT 1",
+                                                        + " return p ORDER BY p.Assists DESC LIMIT 1",
                                                         new Dictionary<string, object>(),
                                                         CypherResultMode.Set);
             players = ((IRawGraphClient)client).ExecuteGetCypherResults<Player>(query).ToList();
@@ -84,7 +84,7 @@ namespace DVSleague.Repository
 
             //mvp
             query = new Neo4jClient.Cypher.CypherQuery("MATCH (l:League {Id:" + league.Id + "})<-[:participates]-(t:Team)<-[:member]-(p:Player)"
-                                                        +" return p ORDER BY (p.Assists + p.Goals) LIMIT 1",
+                                                        +" return p ORDER BY (p.Assists + p.Goals) DESC LIMIT 1",
                                                         new Dictionary<string, object>(),
                                                         CypherResultMode.Set);
             players = ((IRawGraphClient)client).ExecuteGetCypherResults<Player>(query).ToList();
@@ -95,12 +95,7 @@ namespace DVSleague.Repository
 
             return league;
         }
-        public void DeleteLeagueById(int leagueId)
-        {
-            var query = new Neo4jClient.Cypher.CypherQuery("MATCH (l:League { Id:" + leagueId + " }) DETACH DELETE l",
-                               new Dictionary<string, object>(), CypherResultMode.Set);
-            ((IRawGraphClient)client).ExecuteCypher(query);
-        }
+
         private int GetMaxId()
         {
             int maxId;
